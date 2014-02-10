@@ -116,7 +116,6 @@ d2 = {"a": 6, "e": 13, "g": 6, "q": 1}
 
 
 """
-XXXX
 9. Given two dictionaries, d1 and d2, merge the contents of d1 with the contents of d2, adding to the values of existing keys
 eg:
     d1 = {"a": 1, "b":2}
@@ -159,8 +158,8 @@ eg:
 
 s2 = s.split("\n")
 
-# for i,v in enumerate(s2):
-#     print "%d. %s" % (i, v.strip())
+for i,v in enumerate(s2):
+    print "%d. %s" % (i, v.strip())
 
 
 
