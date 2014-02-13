@@ -1,6 +1,5 @@
 import pprint
 
-### didn't work
 
 inputfile = open("test.txt")
 filecontents = inputfile.read()
