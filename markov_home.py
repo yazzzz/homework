@@ -34,13 +34,18 @@ def make_text(chains):
     #get random key from dictionary and add it to list
     random_key = pick_first_random_key(chains)
     sentence = [random_key[0][0],random_key[0][1]]
+    endings = [" in between the sheets!", " in betwixt the sheets where you read Nicholas Sparks every night!", " in the sack!", " in your black satin sheets, dog!", " in between your TJ MAXX discount sheets!", \
+    " in between your STAR WARS bedsheets!", " in between the sheets of the bed in your parents basement!", " in between the sheets where you listen to R Kelly, playa!", \
+    " in between the sheets where you write in your diary, Taylor Swift!"]
 
     while chains.get(random_key[0]) and len(" ".join(sentence)) < 135: #while our key exists in the dict
         pick_value = chains[random_key[0]][random.randint(0, len(chains[random_key[0]])-1)]
         #make new bigram with y value from random_key and pick_value 
-        sentence.append(pick_value)
+        
+        if pick_value.lower() not in  ["a", "the", "and"]:
+            sentence.append(pick_value)
 
-        result =  "\n" +  " ".join(sentence)
+        result =  "\n" +  " ".join(sentence) #+ random.choice(endings)
         if result[-1].isalnum():
             result += "."
         random_key = [(random_key[0][1], pick_value)]
