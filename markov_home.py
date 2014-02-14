@@ -37,12 +37,10 @@ def make_text(chains):
 
     while chains.get(random_key[0]) and len(" ".join(sentence)) < 135: #while our key exists in the dict
         pick_value = chains[random_key[0]][random.randint(0, len(chains[random_key[0]])-1)]
-        print pick_value
         #make new bigram with y value from random_key and pick_value 
         sentence.append(pick_value)
 
         result =  "\n" +  " ".join(sentence)
-        print result[-1]
         if result[-1].isalnum():
             result += "."
         random_key = [(random_key[0][1], pick_value)]
