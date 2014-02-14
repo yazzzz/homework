@@ -42,10 +42,13 @@ def make_text(chains):
         pick_value = chains[random_key[0]][random.randint(0, len(chains[random_key[0]])-1)]
         #make new bigram with y value from random_key and pick_value 
         
-        if pick_value.lower() not in  ["a", "the", "and"]:
+        if pick_value.lower() in  ["a", "the", "and", "an"] and len(sentence) > 130:
+            print pick_value
+            break
+        else:
             sentence.append(pick_value)
 
-        result =  "\n" +  " ".join(sentence) #+ random.choice(endings)
+        result =  "\n" +  " ".join(sentence) + random.choice(endings)
         if result[-1].isalnum():
             result += "."
         random_key = [(random_key[0][1], pick_value)]
