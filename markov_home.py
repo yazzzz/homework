@@ -1,8 +1,26 @@
 #!/usr/bin/env python
 
+import os
 import sys
 import pprint
 import random
+import twitter
+
+def twitter_stuff(sentence):
+
+#TODO use a safer method than won't crash if environment variable not there
+
+    cs = os.environ.get('TWITTER_API_SECRET')
+    ck = os.environ.get('TWITTER_API_KEY')
+    ts = os.environ.get('TWITTER_ACCESS_TOKEN_SECRET')
+    tk = os.environ.get('TWITTER_ACCESS_TOKEN')
+
+    api = twitter.Api(consumer_key=ck,consumer_secret=cs,access_token_key=tk,access_token_secret=ts)
+    status = api.PostUpdate(sentence)
+    print status
+
+    return
+
 
 def make_chains(text):
     """Takes an input text as a string and returns a dictionary of
@@ -54,7 +72,7 @@ def make_text(chains):
         random_key = [(random_key[0][1], pick_value)]
    
     return result
-   
+
 
 def main():
     #args = sys.argv[1]
@@ -66,6 +84,16 @@ def main():
     chain_dict = make_chains(input_text)
     random_text = make_text(chain_dict)
     print random_text
+
+    #twitter_live = os.environ.get('TWITTER_LIVE')
+    
+
+    
+    # if twitter_live == 'YES':
+    #     #print 'do we really want a live tweet?'
+    twitter_stuff(random_text)
+    # else:
+    #     print random_text
 
 if __name__ == "__main__":
     main()
