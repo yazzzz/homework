@@ -223,10 +223,18 @@ def count_up(n, target): # WORKS
         print n
         count_up(n + 1, target)
 
-def count_up(target, n): #from christian
+count_up(8, 12)
+
+def count_up2(target, n): #from christian
     print n
     if n == target:
         return
     count_up(target, n+1)
 
-#count_up(4, 12)
+
+def count_up(target, n): #from nick[0]
+    if n < target:
+        print n
+        count_up(target, n+1)
+
+#count_up(12, 8)
