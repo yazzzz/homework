@@ -143,7 +143,7 @@ def reverse4(l): #from christian, similar to prev
     if l == []:
         return []
 
-    return reverse(l[1:]) + [ l[0] ] # We wrap l[0] in extra brackets to force it to extend the first list
+    return reverse(l[1:]) + [l[0]] # We wrap l[0] in extra brackets to force it to extend the first list
 
 #print reverse([1,2,3,4])
 
@@ -181,14 +181,17 @@ yaz is totally confused on if 'item i' means the index or the value
 find the value and return it if it exists, otherwise
 #        return None if not in the list"""
 
-def find1(i, l): ## FIXME: doesn't work if value is not found!!!
-    if i == l[0]:
-        return l[0]
-    else:
-        l.pop(0)
-        return find(l, i-1)
+def find(i, l): ## FIXME: doesn't work if value is not found!!!
+    if l == []:
+        return None
+    elif l[0] == i:
+        return i
     
-def find(i, l): # from christian
+    return find(i, l[1:])
+
+#print find(99, [5, 2, 1, 4, 3, 6])
+
+def find1(i, l): # from christian
     if l == []:
         return None
 
@@ -197,7 +200,7 @@ def find(i, l): # from christian
 
     return find(i, l[1:]) 
 
-#print find(0, [5, 2, 1, 4, 3, 6])
+print find("a", [5, 2, 1, 4, 3, 6])
 
 
 #print find('Jan',['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug','Sep', 'Oct', 'Nov', 'Dec'])
