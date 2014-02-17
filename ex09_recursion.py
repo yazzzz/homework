@@ -158,6 +158,20 @@ def reverse(l, index, value=[]): #from graf
 # print reverse(a, len(a) - 1)
 # print a
 
+def reverse(list1):
+    """reverse the list"""
+    size = len(list1)
+    for i in range(len(list1)/2):
+        print "list1[i]", list1[i]
+        temp = list1[i]
+        print "temp", temp
+        list1[i] = list1[size-i-1]
+        print "list1[i]", list1[i], "list1[size-i-1]", list1[size-i-1]
+        list1[size-i-1] = temp
+        
+    return list1
+    
+
 ###################################################################################################
 """ Fibonacci returns the nth fibonacci number. The nth fibonacci number is
 # defined as fib(n) = fib(n-1) + fib(n-2)"""
