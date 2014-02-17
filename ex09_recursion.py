@@ -21,7 +21,18 @@ def multiply_list(l): # from christian, fixed
 
     return l[0] * multiply_list(l[1:])
 
-#print multiply_list([1, 2, 3, 4, 5])
+#print multiply_list([1, 2, 3, 4, 5
+
+def multiply_list(l, index, value=1): #from graf
+    if index < 0:
+        return value
+    else:
+        value *= l[index]
+        return multiply_list(l, index - 1, value)
+
+# a = [1, 2, 3, 4, 5]
+# print multiply_list(a, len(a) - 1)
+# print a
 
 ###################################################################################################
 
@@ -50,7 +61,7 @@ def factorial3(n): #non recursion version
 
 ###################################################################################################
 """ Count the number of elements in the list l """
-def count_list2(l): #WORKS
+def count_list(l): #WORKS
     if len(l) == 1:
         return 1
     else:
@@ -58,7 +69,7 @@ def count_list2(l): #WORKS
         return count_list(l[:-1]) + 1
 
 
-def count_list(l): # from christian, fixed
+def count_list2(l): # from christian, fixed
     if l == []:
         return 0
 
@@ -68,7 +79,7 @@ def count_list(l): # from christian, fixed
 
 ###################################################################################################
 """ Sum all of the elements in a list """
-def sum_list1(l):
+def sum_list(l):
     if len(l) == 1:
         return l.pop()
     else:
@@ -81,13 +92,25 @@ def sum_list2(l):
         print l[-1]
         return l[-1] + sum_list(l[:-1])
 
-def sum_list(l): #from christian
+def sum_list3(l): #from christian
     if l == []:
         return 0
 
     return l[0] + sum_list(l[1:])
 
 #print sum_list([1, 2, 3, 4, 5])
+
+
+def sum_list(l, index, value=0): #from graf
+    if index < 0:
+        return value
+    else:
+        value += l[index]
+        return sum_list(l, index - 1, value)
+
+# a = [1, 2, 3, 4, 5]
+# print sum_list(a, len(a) - 1)
+# print a
 
 ###################################################################################################
 """ Reverse a list without slicing or loops """
@@ -96,7 +119,7 @@ def reverse1(l):
         return l
     else:
         print l
-        return [l.pop(0)] + reverse(l) #pop(0) is the first elem of the list
+        return [l.pop()] + reverse(l) #pop() is the last elem of the list
 
 
 def reverse2(l):
@@ -107,7 +130,7 @@ def reverse2(l):
         return [l[-1]] + reverse(l[:-1])
 
 
-def reverse3(l):
+def reverse(l):
     counter = 0
     if len(l) <= 1:
         return l
@@ -116,7 +139,7 @@ def reverse3(l):
         print counter, l[1:], [l[0]]
         return reverse(l[1:]) + [l[0]]
 
-def reverse(l): #from christian, similar to prev
+def reverse4(l): #from christian, similar to prev
     if l == []:
         return []
 
@@ -124,16 +147,27 @@ def reverse(l): #from christian, similar to prev
 
 #print reverse([1,2,3,4])
 
+def reverse(l, index, value=[]): #from graf
+    if index < 0:
+        return value
+    else:
+        value.append(l[index])
+        return reverse(l, index - 1, value)
+
+# a = [1, 2, 3, 4, 5]
+# print reverse(a, len(a) - 1)
+# print a
+
 ###################################################################################################
 """ Fibonacci returns the nth fibonacci number. The nth fibonacci number is
 # defined as fib(n) = fib(n-1) + fib(n-2)"""
-def fibonacci(n): #WORKS
+def fibonacci1(n): #WORKS
     if n <= 1:
         return 1
     else:
         return fibonacci(n-1) + fibonacci(n-2)
 
-def fibonacci1(n): #from christian
+def fibonacci(n): #from christian
     if n <= 1:
         return 1
 
@@ -147,14 +181,14 @@ yaz is totally confused on if 'item i' means the index or the value
 find the value and return it if it exists, otherwise
 #        return None if not in the list"""
 
-def find(i, l):
+def find1(i, l): ## FIXME: doesn't work if value is not found!!!
     if i == l[0]:
         return l[0]
     else:
         l.pop(0)
         return find(l, i-1)
     
-def find2(i, l): # from christian
+def find(i, l): # from christian
     if l == []:
         return None
 
@@ -163,7 +197,8 @@ def find2(i, l): # from christian
 
     return find(i, l[1:]) 
 
-#print find(5, [5, 2, 1, 4, 3, 6])
+#print find(0, [5, 2, 1, 4, 3, 6])
+
 
 #print find('Jan',['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug','Sep', 'Oct', 'Nov', 'Dec'])
 ###################################################################################################
@@ -185,13 +220,13 @@ def palindrome(some_string):
 
     return (some_string[0] == some_string[-1]) and palindrome(some_string[1:-1])
 
-#print palindrome("toot")    
+#print palindrome("toor")    
 
 ###################################################################################################
 """ Given the width and height of a sheet of paper, and the number of times to fold it, 
  return the final dimensions of the sheet as a tuple. Assume that you always 
  fold in half along the longest edge of the sheet. """
-def fold_paper1(width, height, folds):
+def fold_paper(width, height, folds):
     if folds == 0:
         return (width, height)
     else:
@@ -201,7 +236,7 @@ def fold_paper1(width, height, folds):
         else:
             return fold_paper(width, height/2.0, folds-1)
 
-def fold_paper(width, height, folds): #from christian, fixed
+def fold_paper2(width, height, folds): #from christian, fixed
     if folds == 0:
         return (width, height)
 
@@ -223,7 +258,7 @@ def count_up(n, target): # WORKS
         print n
         count_up(n + 1, target)
 
-count_up(8, 12)
+#count_up(8, 12)
 
 def count_up2(target, n): #from christian
     print n
